@@ -1,0 +1,11 @@
+.profileDescr img {
+	width: 300px; 
+	height: 300px;
+	object-fit: cover;
+	border-radius: 15px;
+}
+
+.aboutMe {
+	font-weight: 700;
+	color: rgb(55, 55, 226);
+}

@@ -1,0 +1,32 @@
+.avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 100%;
+}
+
+.page {
+    cursor: pointer;
+}
+
+.selectedPage {
+    font-weight: 900;
+}
+
+.paginator {
+    margin: 10px;
+}
+
+.pageNumber {
+    padding: 5px;
+    border: 1px solid grey;
+}
+
+.pageNumber.selectedPage {
+    font-weight: bold;
+    background-color: blue;
+    color: white
+}
+
+.user {
+    margin-top: 40px;
+}

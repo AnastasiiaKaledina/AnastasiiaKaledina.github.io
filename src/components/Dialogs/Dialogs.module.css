@@ -1,0 +1,18 @@
+.dialogs {
+    padding: 20px;
+    display: grid;
+    grid-template-columns: 2fr 10fr;
+}
+
+.textarea {
+    margin-top: 20px;
+}
+
+.addMessage {
+    width: 100px;
+    height: 30px;
+    background-color: blue;
+    border-radius: 30px;
+    border: none;
+    color: white
+}
