@@ -1,5 +1,5 @@
 # social-network-react
-Приложение социальной сети на React.
+Приложение социальной сети на React, Redux, TypeScript.
 
 # Как смотреть проект
 
