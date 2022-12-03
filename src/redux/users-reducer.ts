@@ -8,7 +8,7 @@ const SET_TOTAL_CURRENT = 'SET_TOTAL_CURRENT';
 const TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCHING';
 const SET_FOLLOWING_PROGRESS = 'SET_FOLLOWING_PROGRESS';
 
-type UserType = {
+export type UserType = {
     id: number
     name: string
     status: string

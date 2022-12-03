@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { ChangeEvent } from 'react';
 import Preloader from '../../common/Preloader/Preloader';
 import classes from './ProfileInfo.module.css';
 import ProfileStatusWithHooks from './ProfileStatusWithHooks';
 import userPhotoNull from '../../../assets/images/userPreviewWithoutPhoto.webp';
+import { ProfileType } from '../../../redux/profile-reducer';
+
 
 
 const ProfileInfo = (props) => {
@@ -30,7 +32,6 @@ const ProfileInfo = (props) => {
 				<ProfileStatusWithHooks status={props.status} updateStatus={props.updateStatus} />
 				<br></br>
 				<div><b className={classes.aboutMe}>Имя: </b>{props.profile.fullName}</div>
-				<div><b className={classes.aboutMe}>Обо мне: </b>{props.profile.aboutMe || 'Нет информации'}</div>
 				<div><b className={classes.aboutMe}>Ищу работу: </b>{props.profile.lookingForAJob ? 'Да' : 'Нет'}</div>
 			</div>
 		</div>
