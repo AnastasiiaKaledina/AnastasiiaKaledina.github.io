@@ -7,5 +7,19 @@
 
 .aboutMe {
 	font-weight: 700;
-	color: rgb(55, 55, 226);
+	color: rgb(104, 104, 239);
+}
+
+.contacts {
+	padding-left: 15px;
+}
+
+.editProfileButton {
+	width: 200px;
+	margin-top: 10px
+}
+
+.formSummaryError {
+	color: red;
+	border: 2px solid red;
 }

@@ -5,7 +5,7 @@ import ProfileInfo from './ProfileInfo/ProfileInfo';
 function Profile(props) {
     return (
         <div>
-            <ProfileInfo isMe={!!props.router.params.userId} uploadPhoto={props.uploadPhoto} profile={props.profile} status={props.status} updateStatus={props.updateUserStatus} />
+            <ProfileInfo isMe={!!props.router.params.userId} uploadPhoto={props.uploadPhoto} profile={props.profile} status={props.status} updateStatus={props.updateUserStatus} postDataProfile={props.postDataProfile} />
             <MyPostsContainer />
         </div>
     )

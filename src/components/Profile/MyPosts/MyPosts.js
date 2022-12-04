@@ -7,9 +7,8 @@ import { Textarea } from '../../common/FieldContainers/FieldContainers';
 
 
 function MyPosts(props) {
-	console.log("Render");
+
 	const addPost = (value) => {
-		console.log(value);
 		props.onAddPost(value.newPostText);
 	}
 

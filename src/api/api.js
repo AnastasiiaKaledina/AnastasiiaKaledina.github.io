@@ -59,12 +59,18 @@ export const profileAPI = {
         return instance.put(`profile/photo`, formData, {
             headers: {
                 'Content-Type': 'multipart/form-data'
-            }
+            } 
         });
+    },
+    postDataProfile(profile) {
+        return instance.put(`profile`, profile)
+            .then(response => {
+                return response.data;
+            });
     }
 }
 
-// объект с методами по авторизации
+
 export const authAPI = {
     me () {
         return instance.get(`auth/me`)

@@ -1,10 +1,12 @@
 import { profileAPI, userAPI } from "../api/api";
+import { stopSubmit } from 'redux-form';
 
 const ADD_POST = 'ADD-POST';
 const SET_USER_PROFILE = 'SET_USER_PROFILE';
 const SET_USER_STATUS = 'SET_USER_STATUS';
 const DELETE_POST = 'DELETE_POST';
 const SET_PHOTO = 'SET_PHOTO';
+
 
 
 type PostDataType = {
@@ -106,6 +108,7 @@ type setPhotoType = {
     type: typeof SET_PHOTO
     photos: PhotosType
 }
+
 export const addPostActionCreator = (newPostText: string): addPostActionType => ({ type: ADD_POST, newPostText });
 export const deletePostActionCreator = (id: number): deletePostActionType => ({ type: DELETE_POST, id });
 export const setUserProfile = (profile: ProfileType): setUserProfileType => ({ type: SET_USER_PROFILE, profile });
@@ -136,5 +139,18 @@ export const uploadPhoto = (file: any) => async (dispatch: any) => {
         dispatch(setPhoto(response.data.data.photos));
     }
 }
+
+export const postDataProfile = (profile: ProfileType) => async (dispatch: any, getState: any) => {
+    const userId = getState().auth.userId
+    const response = await profileAPI.postDataProfile(profile);
+    if (response.resultCode === 0) {
+        dispatch(getUserProfile(userId));
+    } else {
+        dispatch(stopSubmit("profile", { _error: response.messages[0] }));
+        return Promise.reject(response.messages[0])
+    }
+}
+
+
 
 export default profileReducer;
