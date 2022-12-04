@@ -1,6 +1,6 @@
 import React from "react";
 import { Field, reduxForm } from 'redux-form'
-import { postLogin, deleteLogin } from "../../redux/auth-reducer";
+import { postLogin, deleteLogin, getCaptcha } from "../../redux/auth-reducer";
 import { connect } from 'react-redux';
 import { Input } from "../common/FieldContainers/FieldContainers";
 import { required } from '../common/Validate/Validate';
@@ -9,6 +9,7 @@ import style from '../common/FieldContainers/FieldContainers.module.css';
 
 
 const LoginForm = (props) => {
+    debugger;
     return (
         <form onSubmit={props.handleSubmit}>
             <div>
@@ -20,6 +21,13 @@ const LoginForm = (props) => {
             <div>
                 <Field type={"checkbox"} name={"remember"} component={Input} /> remember me
             </div>
+            {props.captcha
+                && <img src={props.captcha} />
+            }
+            {props.captcha &&
+                <Field placeholder={"Enter captcha"} name={"captcha"} component={Input} validate={required} />
+            }
+
             {props.error && <div className={style.formSummaryError}>{props.error}</div>}
             <div>
                 <button>Login</button>
@@ -34,9 +42,10 @@ const LoginReduxForm = reduxForm({
 
 const Login = (props) => {
     const onSubmit = (formData) => {
-        let {login, password, remember} = formData;
+        let {login, password, remember, captcha} = formData;
         console.log(formData);
-        props.postLogin(login, password, remember);
+        props.postLogin(login, password, remember, captcha);
+        
     }
 
     if (props.isAuth) {
@@ -46,13 +55,14 @@ const Login = (props) => {
     return (
         <div>
             <h1>LOGIN</h1>
-            <LoginReduxForm onSubmit={onSubmit}/>
+            <LoginReduxForm onSubmit={onSubmit} captcha={props.captcha} />
         </div>
     )
 }
 
 let mapStateToProps = (state) => ({
-    isAuth: state.auth.isAuth
+    isAuth: state.auth.isAuth,
+    captcha: state.auth.captcha
 });
 
-export default connect(mapStateToProps, {postLogin, deleteLogin})(Login);
+export default connect(mapStateToProps, { postLogin, deleteLogin })(Login);

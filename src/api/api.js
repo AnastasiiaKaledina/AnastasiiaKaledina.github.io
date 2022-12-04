@@ -78,8 +78,8 @@ export const authAPI = {
                 return response.data;
             }); 
     },
-    login(email, password, rememberMe) {
-        return instance.post(`auth/login`, {email, password, rememberMe})
+    login(email, password, rememberMe, captcha) {
+        return instance.post(`auth/login`, { email, password, rememberMe, captcha })
             .then(response => {
                 return response.data;
             }); 
@@ -89,6 +89,12 @@ export const authAPI = {
             .then(response => {
                 return response.data;
             }); 
+    },
+    captcha() {
+        return instance.get(`/security/get-captcha-url`)
+            .then(response => {
+                return response.data;
+            });
     }
 }
 
