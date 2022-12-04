@@ -5,7 +5,7 @@ import Music from './components/Music/Music';
 import News from './components/News/News';
 import UsersContainer from './components/Users/UsersContainer';
 import ProfileContainer from './components/Profile/ProfileContainer';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import './App.css';
 import HeaderContainer from './components/Header/HeaderContainer';
 import Login from './components/Login/Login';
@@ -20,6 +20,7 @@ import { Provider } from 'react-redux';
 const DialogsContainer = React.lazy(() => import('./components/Dialogs/DialogsContainer'));
 
 class App extends React.Component {
+	
 	componentDidMount() {
 		this.props.initializeApp();
 	}
@@ -44,6 +45,8 @@ class App extends React.Component {
 							<Route path='/settings' element={<Settings />} />
 							<Route path='/users' element={<UsersContainer />} />
 							<Route path='/login' element={<Login />} />
+							<Route path='/' element={<Navigate to='/profile' />} />
+							<Route path='*' element={<div>404 PAGE NOT FOUND</div>} />
 						</Routes>
 					</Suspense>
 				</div>
